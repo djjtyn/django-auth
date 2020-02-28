@@ -26,7 +26,7 @@ SECRET_KEY = 'cfe8em9cx(w82!2w*eud4zhg7u#3)d8l*q0gxvb&pib*tm0x45'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-cf950380-9261-4b56-8ead-0810a22f5d66.ws-eu01.gitpod.io'
+    'localhost'
 ]
 
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'django_auth.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
