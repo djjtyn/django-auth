@@ -27,11 +27,13 @@ def login(request):
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                     password=request.POST['password'])
-            messages.success(request, "You have successfully logged in!")
+            
 
             if user:
+                messages.success(request, "You have successfully logged in!")
                 auth.login(user=user, request=request)
                 return redirect(reverse('index'))
+                
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
     else:
@@ -67,4 +69,7 @@ def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
+
+def password_reset_confirm(request):
+    return render(request, 'password_reset_confirm.html', {"form":form})
 
